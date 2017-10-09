@@ -8,7 +8,7 @@ import java.net.Socket;
 import tijos.runtime.networkcenter.TiNetworkCenter;
  
 /**
- * TCP Server Àý³Ì
+ * TCP Server ä¾‹ç¨‹
  *
  */
 public class TCPServer {

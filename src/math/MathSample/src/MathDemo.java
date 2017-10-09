@@ -2,7 +2,7 @@
 import java.lang.Math;
 
 /**
- * TiJOS 中支持的数学函数例程
+ * TiJOS 涓敮鎸佺殑鏁板鍑芥暟渚嬬▼
  * 
  */
 class MathDemo {
