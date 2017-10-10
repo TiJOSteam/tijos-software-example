@@ -1,6 +1,21 @@
 # tijos-software-example
 TiJOS examples for non-hardware functions, like standard java, network, and so on.
 
+
+# More Resources
+
+| Name                                     | Url                                      |
+| ---------------------------------------- | ---------------------------------------- |
+| TiJOS Web Site                           | <http://www.tijos.net>                   |
+| TiJOS Community                          | <http://bbs.tijos.net>                   |
+| TiJOS Introduction                       | <http://dev.tijos.net/overview>          |
+| TiJOS Application Development Guide      | <http://dev.tijos.net/manual>            |
+| TiJOS JDK API Document                   | <http://dev.tijos.net/javadoc>           |
+| TiJOS JDK Software Examples              | <https://github.com/tijosnet/tijos-software-example> |
+| TiJOS Hardware Access Examples           | <https://github.com/tijosnet/tijos-hardware-example> |
+| TiKit-T600-ESP8266A Development Kit Manual | <http://dev.tijos.net/tikit/tikit-t600-esp8266a/> |
+|                                          |                                          |
+
 # TiJOS JDK 常用功能例程
 
 TiJOS JDK与标准Java JDK兼容，本目录下列出了一些基于标准java类的常用例程，方便用户参考
