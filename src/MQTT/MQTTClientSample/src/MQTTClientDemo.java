@@ -10,12 +10,12 @@ import tijos.util.logging.Logger;
 
 /**
  * 
- * MQTT Client Àı³Ì, ÔÚÔËĞĞ´ËÀı³ÌÊ±ÇëÈ·±£MQTT ServerµØÖ·¼°ÓÃ»§ÃûÃÜÂëÕıÈ·
+ * MQTT Client ä¾‹ç¨‹, åœ¨è¿è¡Œæ­¤ä¾‹ç¨‹æ—¶è¯·ç¡®ä¿MQTT Serveråœ°å€åŠç”¨æˆ·åå¯†ç æ­£ç¡®
  *
  */
 
 
-//MQTT ÊÂ¼ş¼àÌı
+//MQTT äº‹ä»¶ç›‘å¬
 class MqttEventLister implements IMqttClientListener
 {
 	
@@ -60,11 +60,11 @@ public class MQTTClientDemo {
 
 	public static void main(String args[]) {
 		
-		//Æô¶¯WLAN¼°DNS
+		//å¯åŠ¨WLANåŠDNS
 		TiNetworkCenter.getNetworkCenter().getWLAN().startup(10000);
 		TiNetworkCenter.getNetworkCenter().getDNS().startup();
 	
-		//MQTT Server µØÖ·,ÓÃ»§Ãû, ÃÜÂë 
+		//MQTT Server åœ°å€,ç”¨æˆ·å, å¯†ç  
 		final String broker       = "tcp://tijos.mqtt.iot.gz.baidubce.com:1883";
         final String username     = "tijos/dev1";
         final String password     = "tWnuCZdmdgqn6uT6oaVjE1NwC9atipvOTxBA0Xn2QFQ=";
@@ -72,11 +72,11 @@ public class MQTTClientDemo {
         //ClientID
         final String clientId     = "mqtt_test_java_tijos";
 	        
-        	//MQTTÁ¬½ÓÉèÖÃ
+        	//MQTTè¿æ¥è®¾ç½®
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setUserName(username);
             connOpts.setPassword(password);
-            //ÔÊĞí×Ô¶¯ÖØĞÂÁ¬½Ó
+            //å…è®¸è‡ªåŠ¨é‡æ–°è¿æ¥
             connOpts.setAutomaticReconnect(true);
 
             MqttClient mqttClient = new MqttClient(broker, clientId);
@@ -87,17 +87,17 @@ public class MQTTClientDemo {
 	           
 	        	mqttClient.SetMqttClientListener(new MqttEventLister());
 	        	
-	        	//Á¬½ÓMQTT·şÎñÆ÷
+	        	//è¿æ¥MQTTæœåŠ¡å™¨
 	            mqttClient.connect(connOpts, mqttClient);
 	            
-	            //¶©ÔÄtopic
+	            //è®¢é˜…topic
 	            String topic        = "topic2";
 	            String head         = "Message from TiJOS NO. ";
 	            
 	            int msgId = mqttClient.subscribe(topic, qos);
 	            Logger.info("MQTTClientDemo", "Subscribe to topic: " + topic + " msgid = " + msgId);
 	            
-	            //·¢²¼topic
+	            //å‘å¸ƒtopic
 	            int counter = 0;
 	            while(true)
 	            {
