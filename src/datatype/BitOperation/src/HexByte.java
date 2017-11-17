@@ -1,14 +1,15 @@
 
 /**
  * 
- * java 移位操作例程
- * JAVA中对byte进行移位运算时必须小心，JAVA在对表达式求值时会自动将byte类型
- * 扩大为int类型，因此在左移时需要将结果转换为byte型，右移时需要与0x0f相与才能获得正确结果
- *
+ * java 绉讳綅鎿嶄綔渚嬬▼
+ * JAVA涓byte杩涜绉讳綅杩愮畻鏃跺繀椤诲皬蹇冿紝JAVA鍦ㄥ琛ㄨ揪寮忔眰鍊兼椂浼氳嚜鍔ㄥ皢byte绫诲瀷
+ * 鎵╁ぇ涓篿nt绫诲瀷锛屽洜姝ゅ湪宸︾Щ鏃堕渶瑕佸皢缁撴灉杞崲涓篵yte鍨嬶紝鍙崇Щ鏃堕渶瑕佷笌0x0f鐩镐笌鎵嶈兘鑾峰緱姝ｇ‘缁撴灉
+ * 
+ * @author TiJOS
  */
 public class HexByte {
 	static public void main(String args[]){
-		char hex[]={
+		char [] hex ={
 				'0','1','2','3','4','5','6','7',
 				'8','9','a','b','c','d','e','f'
 				};
