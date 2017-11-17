@@ -3,9 +3,9 @@
  */
 
 /**
- * ×î¼òµ¥µÄTiJOS Àý³ÌÑÝÊ¾, Í¨¹ýTiKit¿ª·¢°å´òÓ¡¿ÚÊä³ö×Ö·û´®
+ * æœ€ç®€å•çš„TiJOS ä¾‹ç¨‹æ¼”ç¤º, é€šè¿‡TiKitå¼€å‘æ¿æ‰“å°å£è¾“å‡ºå­—ç¬¦ä¸²
  * 
- *
+ * @author TiJOS
  */
 class HelloWorld {
   public static void main(String[] args) {

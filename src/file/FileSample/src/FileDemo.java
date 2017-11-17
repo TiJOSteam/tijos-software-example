@@ -7,6 +7,7 @@ import java.io.IOException;
  * 此例程演示了TiJOS中的文件操作，包括文件创建，读写和列举
  * 注: TiJOS中不支持文件路径
  *
+ *@author TiJOS
  */
 public class FileDemo {
 	public static void main(String[] args) {
@@ -14,16 +15,16 @@ public class FileDemo {
 		String filename = "file1.txt";
 		String content = "12345678901234567890";
 
-		CreatFile(filename);
+		creatFile(filename);
 
-		WriteFile(filename, content);
-		ReadFile(filename, 10, 10);
+		writeFile(filename, content);
+		readFile(filename, 10, 10);
 
-		ListFile();
+		listFile();
 
 	}
 
-	private static void CreatFile(String fileName) {
+	private static void creatFile(String fileName) {
 		File file;
 		try {
 			file = new File(fileName);
@@ -44,7 +45,7 @@ public class FileDemo {
 		}
 	}
 
-	private static void WriteFile(String fileName, String content){
+	private static void writeFile(String fileName, String content){
 		try {
 			File file = new File(fileName);
 			// Write data with stream
@@ -58,7 +59,7 @@ public class FileDemo {
 		}
 	}
 
-	private static void ReadFile(String fileName, int offset, int len) {
+	private static void readFile(String fileName, int offset, int len) {
 		try {
 			File file = new File(fileName);
 			FileInputStream in = new FileInputStream(file);
@@ -75,10 +76,10 @@ public class FileDemo {
 		}
 	}
 
-	private static void ListFile() {
+	private static void listFile() {
 		try {
 			System.out.println("List file");
-			File fa[] = File.listFiles();
+			File [] fa = File.listFiles();
 
 			System.out.println("File number = " + fa.length);
 			for (int i = 0; i < fa.length; i++) {

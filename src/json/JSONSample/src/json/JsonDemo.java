@@ -11,15 +11,16 @@ import tijos.util.json.JSONTokener;
  * TiJOS JDK 中的JSON实现来自https://github.com/stleary/JSON-java, 
  * 支持JSONArray, JSONObject, JSONString, 具体可参考相关资料.
  * 
+ * @author TiJOS
  */
 
-public class jsonDemo {
+public class JsonDemo {
 	
 	public static void main(String args[]) throws JSONException, Exception {
         System.out.println(prepareJSONObject());  
         System.out.println(prepareJSONObject2());  
         
-        ParseJsonObject();
+        parseJsonObject();
     }  
 	
 	/**
@@ -63,9 +64,9 @@ public class jsonDemo {
 	    /**
 	     * JSON 字符串解析
 	     */
-	    private static void ParseJsonObject()
+	    private static void parseJsonObject()
 	    {
-	    	  final String JSON =   
+	    	  final String jsonPerson =   
 	                  "{" +  
 	                      "   \"phone\" : [\"12345678\", \"87654321\"]," +  
 	                      "   \"name\" : \"jack\"," +  
@@ -75,7 +76,7 @@ public class jsonDemo {
 	                  "}";  
 	                    
 	                  try {  
-	                      JSONTokener jsonTokener = new JSONTokener(JSON);  
+	                      JSONTokener jsonTokener = new JSONTokener(jsonPerson);  
 	                      JSONObject person = (JSONObject) jsonTokener.nextValue();  
 	                    
 	                      JSONArray phoneArray = person.getJSONArray("phone");

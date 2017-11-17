@@ -1,20 +1,24 @@
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import tijos.runtime.networkcenter.TiNetworkCenter;
+import tijos.framework.networkcenter.TiDNS;
+import tijos.framework.networkcenter.TiWLAN;
 
 /**
  * 
- * 本例程演示如何获取系统信息以及通过java标准InetAddress访问TiJOS的DNS服务，获取指定域名IP地址
+ * 鏈緥绋嬫紨绀哄浣曡幏鍙栫郴缁熶俊鎭互鍙婇�氳繃java鏍囧噯InetAddress璁块棶TiJOS鐨凞NS鏈嶅姟锛岃幏鍙栨寚瀹氬煙鍚岻P鍦板潃
  * 
+ * @author TiJOS
  */
 
-public class DNSDemo {
+public class DnsDemo {
 
 	public static void main(String[] args) {
 
-		TiNetworkCenter.getNetworkCenter().getWLAN().startup(10000);
-		TiNetworkCenter.getNetworkCenter().getDNS().startup();
+		//鍚姩WLAN鍙奃NS
+		TiWLAN.getInstance().startup(10);
+		TiDNS.getInstance().startup();
 
 		try {
 			//System properties

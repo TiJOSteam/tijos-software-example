@@ -3,7 +3,8 @@ import java.lang.Math;
 
 /**
  * TiJOS 中支持的数学函数例程
- * 
+ *  
+ *  @author TiJOS
  */
 class MathDemo {
 
