@@ -5,23 +5,25 @@ import java.io.OutputStream;
 
 import java.net.ServerSocket;
 import java.net.Socket;
-import tijos.runtime.networkcenter.TiNetworkCenter;
+
+import tijos.framework.networkcenter.TiDNS;
+import tijos.framework.networkcenter.TiWLAN;
  
 /**
  * TCP Server 例程
- *
+ * @author TiJOS
  */
-public class TCPServer {
+public class TcpServer {
 
 	/**
 	 * Runs the server.
 	 */
 	public static void main(String[] args) 
 	{
-		//Startup the WLAN 
-		TiNetworkCenter.getNetworkCenter().getWLAN().startup(10000);
-		TiNetworkCenter.getNetworkCenter().getDNS().startup();
-		
+		//启动WLAN及DNS
+		TiWLAN.getInstance().startup(10);
+		TiDNS.getInstance().startup();
+
 		ServerSocket listener = null;
 		Socket socket = null;
 		try {

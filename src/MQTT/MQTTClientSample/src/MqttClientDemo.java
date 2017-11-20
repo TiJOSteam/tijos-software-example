@@ -1,69 +1,86 @@
  
-import java.io.IOException;
-
-
-import tijos.runtime.net.mqtt.IMqttClientListener;
-import tijos.runtime.net.mqtt.MqttClient;
-import tijos.runtime.net.mqtt.MqttConnectOptions;
-import tijos.runtime.networkcenter.TiNetworkCenter;
+import tijos.framework.networkcenter.TiDNS;
+import tijos.framework.networkcenter.TiWLAN;
+import tijos.framework.net.mqtt.MqttClientListener;
+import tijos.framework.net.mqtt.MqttClient;
+import tijos.framework.net.mqtt.MqttConnectOptions;
 import tijos.util.logging.Logger;
 
 /**
  * 
  * MQTT Client 例程, 在运行此例程时请确保MQTT Server地址及用户名密码正确
- *
+ * 
+ * @author TiJOS
  */
 
 
-//MQTT 事件监听
-class MqttEventLister implements IMqttClientListener
+/**
+ * MQTT 事件监听 
+ * 
+ */
+class MqttEventLister implements MqttClientListener
 {
 	
 	@Override
-	public void onConnected(Object userContext) {
-		Logger.info("MqttEventLister","onConnected");
-	}
-
-	@Override
-	public void onDisconnected(Object userContext) {
-		Logger.info("MqttEventLister","onDisconnected");
+	public void connectComplete(Object userContext, boolean reconnect) {
+		Logger.info("MqttEventLister","connectComplete");
 		
 	}
 
 	@Override
-	public void messageArrived(Object userContext, String topic, byte[] payload) throws IOException {
+	public void connectionLost(Object userContext) {
+		Logger.info("MqttEventLister","connectionLost");
+		
+	}
+	
+	@Override
+	public void onMqttConnectFailure(Object userContext, int cause) {
+		Logger.info("MqttEventLister","onMqttConnectFailure cause = " + cause);
+		
+	}
+
+	@Override
+	public void onMqttConnectSuccess(Object userContext) {
+		Logger.info("MqttEventLister","onMqttConnectSuccess");
+		
+	}
+	
+
+	@Override
+	public void messageArrived(Object userContext, String topic, byte[] payload) {
 		Logger.info("MqttEventLister","messageArrived topic = " + topic);
 		
 	}
 
 	@Override
-	public void publishCompleted(Object userContext, int msgId, String topic, int result) throws IOException {
+	public void publishCompleted(Object userContext, int msgId, String topic, int result) {
 		Logger.info("MqttEventLister","publishCompleted topic = " + topic + " result = " + result + "msgid = " + msgId);
 	
 	}
 
 	@Override
-	public void subscribeCompleted(Object userContext, int msgId,String topic, int result) throws IOException {
+	public void subscribeCompleted(Object userContext, int msgId,String topic, int result) {
 		Logger.info("MqttEventLister","subscribeCompleted topic = " + topic + " result " + result + "msgid = " + msgId);
 	
 	}
 
 	@Override
-	public void unsubscribeCompleted(Object userContext, int msgId, String topic, int result) throws IOException {
+	public void unsubscribeCompleted(Object userContext, int msgId, String topic, int result) {
 		Logger.info("MqttEventLister","unsubscribeCompleted topic = " + topic + "result " + result + "msgid = " + msgId);
 
 	}
-	
+
 }
 
-public class MQTTClientDemo {
+public class MqttClientDemo {
 
 	public static void main(String args[]) {
 		
 		//启动WLAN及DNS
-		TiNetworkCenter.getNetworkCenter().getWLAN().startup(10000);
-		TiNetworkCenter.getNetworkCenter().getDNS().startup();
-	
+		TiWLAN.getInstance().startup(10);
+		TiDNS.getInstance().startup();
+
+
 		//MQTT Server 地址,用户名, 密码 
 		final String broker       = "tcp://tijos.mqtt.iot.gz.baidubce.com:1883";
         final String username     = "tijos/dev1";
@@ -116,12 +133,7 @@ public class MQTTClientDemo {
 	        }
 	        finally
 	        {	
-	        	try {
-					mqttClient.close();//release resource 
-				} catch (IOException e) {
-					 
-					e.printStackTrace();
-				} 
+	        	mqttClient.close();//release resource  
 	        }
 	    }
 }

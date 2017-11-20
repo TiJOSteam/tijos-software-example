@@ -3,34 +3,33 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Calendar;
 
-import tijos.runtime.net.ntp.NTPUDPClient;
-import tijos.runtime.net.ntp.TimeInfo;
-import tijos.runtime.networkcenter.TiNetworkCenter;
+import tijos.framework.net.ntp.NTPUDPClient;
+import tijos.framework.net.ntp.TimeInfo;
+import tijos.framework.networkcenter.*;
 
 /**
- * Network Time Protocol Client Àı³Ì
- * ´ÓÖ¸NTP·şÎñÆ÷»ñµÃÍøÂçÊ±¼ä
- *
+ * Network Time Protocol Client ä¾‹ç¨‹
+ * ä»æŒ‡NTPæœåŠ¡å™¨è·å¾—ç½‘ç»œæ—¶é—´
+ * @author TiJOS
  */
-public class NTPClient {
+public class NtpClient {
 
 	public static void main(String[] args) {
 		 
-		//Æô¶¯WLAN¼°DNS
-		TiNetworkCenter.getNetworkCenter().getWLAN().startup(10000);
-		TiNetworkCenter.getNetworkCenter().getDNS().startup();
-		
-		
+		//å¯åŠ¨WLANåŠDNS
+		TiWLAN.getInstance().startup(10);
+		TiDNS.getInstance().startup();
+
 		NTPUDPClient ntpcli = new NTPUDPClient();
 		long interval = 0;
 		try {
-			//NTP ·şÎñÆ÷
-			InetAddress host = InetAddress.getByName("58.220.207.226"); //NTP Server IP, get it from http://ntp.org.cn/
+			//NTP æœåŠ¡å™¨, NTP Server IP, get it from http://ntp.org.cn/
+			InetAddress host = InetAddress.getByName("58.220.207.226"); 
 			
-			//´ÓNTP·şÎñÆ÷Í¨¹ıUDP»ñµÃÊ±¼ä 
+			//ä»NTPæœåŠ¡å™¨é€šè¿‡UDPè·å¾—æ—¶é—´ 
 			TimeInfo tm = ntpcli.getTime(host);
 			
-			//»ñµÃÓë±¾µØÊ±¼äµÄ²îÖµ
+			//è·å¾—ä¸æœ¬åœ°æ—¶é—´çš„å·®å€¼
 			interval = tm.getOffset();
 			
 		} catch (UnknownHostException e1) {
@@ -41,7 +40,7 @@ public class NTPClient {
 			e.printStackTrace();
 		}
 		
-		//ÏÔÊ¾µ±Ç°×¼È·Ê±¼ä 
+		//æ˜¾ç¤ºå½“å‰å‡†ç¡®æ—¶é—´ 
 		Calendar cal = Calendar.getInstance();
 		
 		cal.setTimeInMillis(interval + System.currentTimeMillis());

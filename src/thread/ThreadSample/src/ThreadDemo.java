@@ -1,40 +1,42 @@
 import java.util.LinkedList;
 
 /** 
- * ¶àÏß³ÌÀý³Ì£º Éú²úÕß-Ïû·ÑÕß
+ * å¤šçº¿ç¨‹ä¾‹ç¨‹ï¼š ç”Ÿäº§è€…-æ¶ˆè´¹è€…
  * Producer-Consumer in Java. 
+ *  
+ *  @author TiJOS
  */
 
-class producerThread extends Thread
+class ProducerThread extends Thread
 {
-	LinkedList<Object> _list;
+	LinkedList<Object> objList;
 	
-	boolean _stop = false;
+	boolean stop = false;
 
-	public producerThread(LinkedList<Object> list)
+	public ProducerThread(LinkedList<Object> list)
 	{
-		_list = list;
+		objList = list;
 	}
 	
 	public void stopRequest()
 	{
-		_stop = true;
+		stop = true;
 	}
 
 	public void run() {
 		int len = 0;
-		_stop = false;
-		while(!_stop)
+		stop = false;
+		while(!stop)
 		{
-			synchronized(_list) {
+			synchronized(objList) {
 				Object justProduced = new Object();
-				_list.addFirst(justProduced);
-				len = _list.size();
+				objList.addFirst(justProduced);
+				len = objList.size();
 
 				System.out.println("Produce a new object " + justProduced);
 				System.out.println("List size now " + len);
 
-				_list.notifyAll();
+				objList.notifyAll();
 			}
 			
 			try {
@@ -47,37 +49,37 @@ class producerThread extends Thread
 	}
 }
 
-class consumerThread extends Thread
+class ConsumerThread extends Thread
 {
-	LinkedList<Object> _list;
-	boolean _stop = false;
+	LinkedList<Object> objList;
+	boolean stop = false;
 	
-	public consumerThread(LinkedList<Object> list)
+	public ConsumerThread(LinkedList<Object> list)
 	{
-		_list = list;
+		objList = list;
 	}
 	
 	public void stopRequest()
 	{
-		_stop = true;
+		stop = true;
 	}
 	public void run()
 	{
 		Object obj = null;
 		int len = 0;
-		while (!_stop) 
+		while (!stop) 
 		{
-			synchronized(_list) {
+			synchronized(objList) {
 				try {
-					_list.wait();
+					objList.wait();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 
-				while(_list.size() > 0)
+				while(objList.size() > 0)
 				{
-					obj = _list.removeLast();
-					len = _list.size();
+					obj = objList.removeLast();
+					len = objList.size();
 					System.out.println("Consuming object " + obj);
 					System.out.println("List size now " + len);
 				}
@@ -92,7 +94,7 @@ class consumerThread extends Thread
 	}
 }
 
-public class threadDemo {
+public class ThreadDemo {
 
 	protected static LinkedList<Object> list = new LinkedList<Object>();
 
@@ -100,8 +102,8 @@ public class threadDemo {
 	{
 		try
 		{
-			producerThread  producer = new producerThread(list);
-			consumerThread  consumer = new consumerThread(list);
+			ProducerThread  producer = new ProducerThread(list);
+			ConsumerThread  consumer = new ConsumerThread(list);
 
 			producer.start();
 			consumer.start();

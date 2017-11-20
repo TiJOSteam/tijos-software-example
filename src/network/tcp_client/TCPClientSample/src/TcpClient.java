@@ -5,23 +5,24 @@ import java.io.OutputStream;
 
 import java.net.Socket;
 
-import tijos.runtime.networkcenter.TiNetworkCenter;
+import tijos.framework.networkcenter.TiDNS;
+import tijos.framework.networkcenter.TiWLAN;
 
 /**
- * TCP client Àı³Ì£¬ ÔÚÔËĞĞÊ±ÇëÉèÖÃÕıÈ·µÄTCP Server IPµØÖ·
+ * TCP client ä¾‹ç¨‹ï¼Œ åœ¨è¿è¡Œæ—¶è¯·è®¾ç½®æ­£ç¡®çš„TCP Server IPåœ°å€
  * 
- *
+ * @author TiJOS
  */
-public class TCPClient {
+public class TcpClient {
 	
 
 	public static void main(String[] args) {
 	
-		//Start up WLAN 
-		TiNetworkCenter.getNetworkCenter().getWLAN().startup(10000);
-		TiNetworkCenter.getNetworkCenter().getDNS().startup();
-	
-		//TCP·şÎñÆ÷IP¼°PORT
+		//å¯åŠ¨WLANåŠDNS
+		TiWLAN.getInstance().startup(10);
+		TiDNS.getInstance().startup();
+		
+		//TCPæœåŠ¡å™¨IPåŠPORT
 		String host = "192.168.1.55";
 		int port = 8080;
 		Socket client = null;

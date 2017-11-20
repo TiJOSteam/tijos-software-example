@@ -2,13 +2,17 @@
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import tijos.runtime.networkcenter.TiNetworkCenter;
+
+import tijos.framework.networkcenter.TiDNS;
+import tijos.framework.networkcenter.TiWLAN;
 
 
 /**
- * UDP 例程, 运行之前请设置正确的IP地址
+ * UDP 渚嬬▼, 杩愯涔嬪墠璇疯缃纭殑IP鍦板潃
+ * 
+ * @author TiJOS
  */
-public class UDPDemo {
+public class UdpDemo {
 
     /**
      * The main method.
@@ -17,9 +21,10 @@ public class UDPDemo {
      */
     public static void main(String[] args) 
     {
-		TiNetworkCenter.getNetworkCenter().getWLAN().startup(10000);
-		TiNetworkCenter.getNetworkCenter().getDNS().startup();
-	   	
+		//鍚姩WLAN鍙奃NS
+		TiWLAN.getInstance().startup(10);
+		TiDNS.getInstance().startup();
+
 		DatagramSocket udpSocket  = null;
     	try
     	{
