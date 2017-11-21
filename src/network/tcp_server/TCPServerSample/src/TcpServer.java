@@ -53,6 +53,7 @@ public class TcpServer {
 					
 						System.out.println("this is server");
 						out.write(buff, 0, len);
+						out.flush();
 					}
 				}
 			}

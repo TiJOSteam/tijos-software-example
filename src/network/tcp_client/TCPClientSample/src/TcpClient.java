@@ -37,6 +37,7 @@ public class TcpClient {
 			
 			//Send data to the TCP server
 			output.write("Hello, this is client".getBytes());
+			output.flush();
 			
 			//Get remote data from the server
 			InputStream input = client.getInputStream();
@@ -52,6 +53,7 @@ public class TcpClient {
 					
 					//echo to the server
 					output.write(buffer, 0, len);
+					output.flush();
 				}
 			}
 		
