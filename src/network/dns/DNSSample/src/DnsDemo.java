@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -16,11 +17,11 @@ public class DnsDemo {
 
 	public static void main(String[] args) {
 
-		//启动WLAN及DNS
-		TiWLAN.getInstance().startup(10);
-		TiDNS.getInstance().startup();
-
 		try {
+			//启动WLAN及DNS
+			TiWLAN.getInstance().startup(10);
+			TiDNS.getInstance().startup();
+
 			//System properties
 			System.out.println("java.vm.name = " + System.getProperty("java.vm.name"));
 			System.out.println("java.vm.version = " + System.getProperty("java.vm.version"));
@@ -44,7 +45,11 @@ public class DnsDemo {
 			
 		} catch (UnknownHostException e) {
 			System.out.println("UnknownHostException");
+			
+		}catch(IOException ie){
+			ie.printStackTrace();
 		}
+		
 
 	}
 

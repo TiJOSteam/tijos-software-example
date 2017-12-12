@@ -18,16 +18,16 @@ public class TcpClient {
 
 	public static void main(String[] args) {
 	
-		//启动WLAN及DNS
-		TiWLAN.getInstance().startup(10);
-		TiDNS.getInstance().startup();
-		
 		//TCP服务器IP及PORT
 		String host = "192.168.1.55";
 		int port = 8080;
 		Socket client = null;
 		try 
 		{
+			//启动WLAN及DNS
+			TiWLAN.getInstance().startup(10);
+			TiDNS.getInstance().startup();
+
 			//Connect to the server with TCP 
 			client = new Socket(host, port);
 			System.out.print("Connect : " + client.getRemoteSocketAddress() + " local " + client.getLocalSocketAddress());

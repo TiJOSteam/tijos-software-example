@@ -20,13 +20,14 @@ public class TcpServer {
 	 */
 	public static void main(String[] args) 
 	{
-		//启动WLAN及DNS
-		TiWLAN.getInstance().startup(10);
-		TiDNS.getInstance().startup();
-
 		ServerSocket listener = null;
 		Socket socket = null;
 		try {
+			//启动WLAN及DNS
+			TiWLAN.getInstance().startup(10);
+			TiDNS.getInstance().startup();
+
+			
 			listener = new ServerSocket(8080);
 			System.out.println("local ip = " + listener.getLocalSocketAddress());
 
