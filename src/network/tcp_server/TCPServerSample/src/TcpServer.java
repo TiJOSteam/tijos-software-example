@@ -2,7 +2,7 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -27,12 +27,12 @@ public class TcpServer {
 			TiWLAN.getInstance().startup(10);
 			TiDNS.getInstance().startup();
 
+			System.out.println("local ip = " + InetAddress.getByName("localhost"));
 			
 			listener = new ServerSocket(8080);
-			System.out.println("local ip = " + listener.getLocalSocketAddress());
-
 			
-			//default timeout: 60 seconds
+			//listen timeout: 60 seconds 
+			listener.setSoTimeout(60000);
 			socket = listener.accept();
 			System.out.println("a client is connected: " + socket.getRemoteSocketAddress());
 			
@@ -69,18 +69,14 @@ public class TcpServer {
 			{
 				try {
 					listener.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				} catch (IOException e) { }
 			}
 			
 			if(socket != null)
 			{
 				try {
 					socket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				} catch (IOException e) { }
 			}
 		}
 		
