@@ -16,15 +16,17 @@ public class NtpClient {
 
 	public static void main(String[] args) {
 		 
-		//启动WLAN及DNS
-		TiWLAN.getInstance().startup(10);
-		TiDNS.getInstance().startup();
-
-		NTPUDPClient ntpcli = new NTPUDPClient();
 		long interval = 0;
+
 		try {
+			//启动WLAN及DNS
+			TiWLAN.getInstance().startup(10);
+			TiDNS.getInstance().startup();
+
+			NTPUDPClient ntpcli = new NTPUDPClient();
+
 			//NTP 服务器, NTP Server IP, get it from http://ntp.org.cn/
-			InetAddress host = InetAddress.getByName("58.220.207.226"); 
+			InetAddress host = InetAddress.getByName("202.112.29.82"); 
 			
 			//从NTP服务器通过UDP获得时间 
 			TimeInfo tm = ntpcli.getTime(host);
