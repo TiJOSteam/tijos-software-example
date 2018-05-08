@@ -3,8 +3,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Calendar;
 
-import tijos.framework.net.ntp.NTPUDPClient;
-import tijos.framework.net.ntp.TimeInfo;
+import tijos.framework.networkcenter.ntp.NTPUDPClient;
+import tijos.framework.networkcenter.ntp.TimeInfo;
 import tijos.framework.networkcenter.*;
 
 /**

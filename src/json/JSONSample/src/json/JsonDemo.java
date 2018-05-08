@@ -1,10 +1,10 @@
 package json;
 
-import tijos.util.json.JSONArray;
-import tijos.util.json.JSONException;
-import tijos.util.json.JSONObject;
-import tijos.util.json.JSONStringer;
-import tijos.util.json.JSONTokener;
+import tijos.framework.util.json.JSONArray;
+import tijos.framework.util.json.JSONException;
+import tijos.framework.util.json.JSONObject;
+import tijos.framework.util.json.JSONStringer;
+import tijos.framework.util.json.JSONTokener;
 
 /**
  * 本例程演示了TiJOS中JSON的用法

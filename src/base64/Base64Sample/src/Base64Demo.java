@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Arrays;
 
-import tijos.util.base64.Base64;
+import tijos.framework.util.base64.Base64;
 
 
 /**

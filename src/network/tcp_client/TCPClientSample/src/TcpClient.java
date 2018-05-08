@@ -19,7 +19,7 @@ public class TcpClient {
 	public static void main(String[] args) {
 	
 		//TCP服务器IP及PORT
-		String host = "192.168.1.55";
+		String host = "192.168.1.86";
 		int port = 8080;
 		Socket client = null;
 		try 

@@ -31,7 +31,7 @@ public class DnsDemo {
 			System.out.println("os.arch = " + System.getProperty("os.arch"));
 
 			System.out.println("host.name = " + System.getProperty("host.name"));
-			System.out.println("host.id = " + System.getProperty("host.id"));
+			System.out.println("host.sn = " + System.getProperty("host.sn"));
 
 			//local ip
 			System.out.println(" localhost ip by name = " + InetAddress.getLocalHost());

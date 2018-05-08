@@ -21,7 +21,7 @@ public class UdpDemo {
      */
     public static void main(String[] args) 
     {
-
+    	System.out.println("UdpDemo start...");
 		DatagramSocket udpSocket  = null;
     	try
     	{
@@ -31,7 +31,7 @@ public class UdpDemo {
 
     		
 			udpSocket = new DatagramSocket();
-	        String host = "192.168.1.55";
+	        String host = "192.168.1.86";
 	        int port = 8080;
 	        
 	
@@ -50,7 +50,7 @@ public class UdpDemo {
 	            
 	            String info = new String(dp.getData(), 0, dp.getLength());
 	            System.out.println("Received: " + info);
-	            System.out.println("Remote :" + dp.getAddress());
+	            System.out.println("Remote :" + dp.getAddress().getHostAddress());
 	            
 	            dp.setAddress(InetAddress.getByName(host));
 	            dp.setPort(port);

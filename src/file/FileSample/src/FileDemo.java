@@ -12,6 +12,8 @@ import java.io.IOException;
 public class FileDemo {
 	public static void main(String[] args) {
 
+		System.out.println("File operation demo.");
+		
 		String filename = "file1.txt";
 		String content = "12345678901234567890";
 
