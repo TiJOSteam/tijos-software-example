@@ -3,8 +3,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import tijos.framework.networkcenter.TiDNS;
-import tijos.framework.networkcenter.TiWLAN;
+import tijos.framework.networkcenter.dns.TiDNS;
+import tijos.framework.platform.wlan.TiWiFi;
 
 /**
  * 
@@ -19,7 +19,7 @@ public class DnsDemo {
 
 		try {
 			//启动WLAN及DNS
-			TiWLAN.getInstance().startup(10);
+			TiWiFi.getInstance().startup(10);
 			TiDNS.getInstance().startup();
 
 			//System properties

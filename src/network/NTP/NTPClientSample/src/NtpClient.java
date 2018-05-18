@@ -5,7 +5,9 @@ import java.util.Calendar;
 
 import tijos.framework.networkcenter.ntp.NTPUDPClient;
 import tijos.framework.networkcenter.ntp.TimeInfo;
-import tijos.framework.networkcenter.*;
+
+import tijos.framework.networkcenter.dns.TiDNS;
+import tijos.framework.platform.wlan.TiWiFi;
 
 /**
  * Network Time Protocol Client 例程
@@ -20,7 +22,7 @@ public class NtpClient {
 
 		try {
 			//启动WLAN及DNS
-			TiWLAN.getInstance().startup(10);
+			TiWiFi.getInstance().startup(10);
 			TiDNS.getInstance().startup();
 
 			NTPUDPClient ntpcli = new NTPUDPClient();
