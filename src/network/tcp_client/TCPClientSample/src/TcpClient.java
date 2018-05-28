@@ -5,8 +5,8 @@ import java.io.OutputStream;
 
 import java.net.Socket;
 
-import tijos.framework.networkcenter.TiDNS;
-import tijos.framework.networkcenter.TiWLAN;
+import tijos.framework.networkcenter.dns.TiDNS;
+import tijos.framework.platform.wlan.TiWiFi;
 
 /**
  * TCP client 例程， 在运行时请设置正确的TCP Server IP地址
@@ -25,7 +25,7 @@ public class TcpClient {
 		try 
 		{
 			//启动WLAN及DNS
-			TiWLAN.getInstance().startup(10);
+			TiWiFi.getInstance().startup(10);
 			TiDNS.getInstance().startup();
 
 			//Connect to the server with TCP 

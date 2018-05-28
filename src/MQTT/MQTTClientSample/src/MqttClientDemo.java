@@ -1,6 +1,7 @@
 
-import tijos.framework.networkcenter.TiDNS;
-import tijos.framework.networkcenter.TiWLAN;
+import tijos.framework.networkcenter.dns.TiDNS;
+import tijos.framework.platform.wlan.TiWiFi;
+
 import tijos.framework.networkcenter.mqtt.MqttClientListener;
 
 import java.io.IOException;
@@ -83,7 +84,7 @@ public class MqttClientDemo {
 
 		// 启动WLAN及DNS
 		try {
-			TiWLAN.getInstance().startup(10);
+			TiWiFi.getInstance().startup(10);
 			TiDNS.getInstance().startup();
 		} catch (IOException ie) {
 			ie.printStackTrace();

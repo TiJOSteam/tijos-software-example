@@ -3,8 +3,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import tijos.framework.networkcenter.TiDNS;
-import tijos.framework.networkcenter.TiWLAN;
+import tijos.framework.networkcenter.dns.TiDNS;
+import tijos.framework.platform.wlan.TiWiFi;
 
 
 /**
@@ -26,7 +26,7 @@ public class UdpDemo {
     	try
     	{
     		//启动WLAN及DNS
-    		TiWLAN.getInstance().startup(10);
+    		TiWiFi.getInstance().startup(10);
     		TiDNS.getInstance().startup();
 
     		

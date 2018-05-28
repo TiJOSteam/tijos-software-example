@@ -6,9 +6,9 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import tijos.framework.networkcenter.TiDNS;
-import tijos.framework.networkcenter.TiWLAN;
- 
+import tijos.framework.networkcenter.dns.TiDNS;
+import tijos.framework.platform.wlan.TiWiFi;
+
 /**
  * TCP Server 例程
  * @author TiJOS
@@ -24,7 +24,7 @@ public class TcpServer {
 		Socket socket = null;
 		try {
 			//启动WLAN及DNS
-			TiWLAN.getInstance().startup(10);
+			TiWiFi.getInstance().startup(10);
 			TiDNS.getInstance().startup();
 
 			System.out.println("local ip = " + InetAddress.getByName("localhost"));
