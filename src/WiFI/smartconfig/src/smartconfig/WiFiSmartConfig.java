@@ -8,7 +8,7 @@ import tijos.framework.util.Delay;
 /**
  * SmartConfig WIFI 通过手机APP进行WIFI快速连接配置例程
  * 手机APP及源码可从以下路径获得 https://github.com/EspressifApp/EsptouchForAndroid
- * 
+ * 该配置执行一次即可，下次启动会自动连接WIFI
  * @author tijos
  *
  */
@@ -31,9 +31,7 @@ public class WiFiSmartConfig {
 				System.out.println(" Password: " + TiWiFi.getInstance().getPassword());
 			
 			
-				while(true) {
-					Delay.msDelay(5000);
-				}
+				Delay.msDelay(1000);
 				
 			}
 		catch(IOException ex) {
