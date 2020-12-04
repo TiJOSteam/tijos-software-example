@@ -17,7 +17,7 @@ TiJOS JDK与标准Java JDK兼容，本目录下列出了一些基于标准java�
 | base64                | BASE64编码解码例程                       |
 | json                  | JSON字符串生成和解析例程                 |
 | MQTT                  | 基于MqttClient的MQTT客户端例程           |
-| SmartConfig           | 通过手机APP进行WIFI快速连接配置例程      |
+| AliYun           | 阿里云物联网平台接入例程      |
 
 
 
